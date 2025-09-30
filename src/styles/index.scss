@@ -1,0 +1,137 @@
+// El Table Enhance - 列高亮和行高亮样式
+// Column and row highlight styles for enhanced el-table
+
+.el-table {
+  // 列高亮基础样式
+  .el-table-enhanced-col-hover {
+    background-color: #f5f7fa !important;
+    transition: background-color 0.2s ease;
+  }
+
+  // 行高亮基础样式
+  .el-table-enhanced-row-hover {
+    background-color: #f0f9ff !important;
+    transition: background-color 0.2s ease;
+  }
+
+  // 表头高亮
+  th.el-table-enhanced-col-hover {
+    background-color: #f0f9ff !important;
+    font-weight: 600;
+  }
+
+  // 表体高亮
+  td.el-table-enhanced-col-hover {
+    background-color: #f5f7fa !important;
+  }
+
+  // 斑马纹表格的兼容
+  &.el-table--striped {
+    .el-table__body tr.el-table__row--striped {
+      td.el-table-enhanced-col-hover {
+        background-color: #fafbfc !important;
+      }
+      
+      &.el-table-enhanced-row-hover {
+        background-color: #f8fafc !important;
+      }
+    }
+  }
+
+  // 悬停行的兼容
+  .el-table__body tr:hover {
+    td.el-table-enhanced-col-hover {
+      background-color: #e6f7ff !important;
+    }
+  }
+
+  // 选中行的兼容
+  .el-table__body tr.current-row {
+    td.el-table-enhanced-col-hover {
+      background-color: #ecf5ff !important;
+    }
+  }
+
+  // 深色主题支持
+  &.el-table--dark {
+    .el-table-enhanced-col-hover {
+      background-color: #2d3748 !important;
+    }
+    
+    .el-table-enhanced-row-hover {
+      background-color: #1a365d !important;
+    }
+    
+    &.el-table--striped {
+      .el-table__body tr.el-table__row--striped {
+        td.el-table-enhanced-col-hover {
+          background-color: #374151 !important;
+        }
+        
+        &.el-table-enhanced-row-hover {
+          background-color: #1f2937 !important;
+        }
+      }
+    }
+  }
+}
+
+// 列宽拖拽手柄样式
+.el-table-resize-handle {
+  position: absolute;
+  top: 3px;
+  right: -4px;
+  bottom: 3px;
+  width: 8px;
+  cursor: col-resize;
+  border-radius: 4px;
+  z-index: 4;
+  user-select: none;
+  pointer-events: auto;
+  opacity: 0;
+  transition: all 0.3s ease;
+  background: rgba(64, 158, 255);
+  
+  // 添加拖拽指示器
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 1px;
+    right: 2px;
+    top:50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+  }
+  
+  // 添加中间的分割线效果
+  &::after {
+    left: 2px;
+  }
+
+  // 悬停效果
+  &:hover {
+    opacity: 1!important;      
+  }
+
+  // 拖拽状态
+  &.is-resizing {
+    opacity: 1 !important;
+  }
+}
+
+// 当列高亮时显示拖拽手柄
+.el-table-enhanced-col-hover .el-table-resize-handle {
+  opacity: .5;
+}
+
+// 拖动状态下，只有正在拖动的列显示handle
+.el-table-resizing-column .el-table-resize-handle {
+  opacity: 1 !important;
+}
+
+// 当表格处于拖动状态时，隐藏非拖动列的handle
+.el-table.el-table-is-resizing .el-table-enhanced-col-hover:not(.el-table-resizing-column) .el-table-resize-handle {
+  opacity: 0 !important;
+}

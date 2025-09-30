@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Table Enhance Demo</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .demo-section {
+            margin-bottom: 30px;
+        }
+        .demo-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>El Table Enhance 演示</h1>
+        
+        <div class="demo-section">
+            <div class="demo-title">启用列高亮的表格</div>
+            <el-table
+                :highlight-current-col="true"
+                :resizable="true"
+                :data="tableData"
+                style="width: 100%"
+                 >
+                <el-table-column prop="date" label="日期" width="180"></el-table-column>
+                <el-table-column prop="name" label="姓名" width="180"></el-table-column>
+                <el-table-column prop="address" label="地址"></el-table-column>
+                <el-table-column prop="score" label="分数" width="100"></el-table-column>
+            </el-table>
+            <p style="color: #909399; margin-top: 10px;">鼠标悬停在列上查看高亮效果</p>
+        </div>
+
+        <div class="demo-section">
+            <div class="demo-title">普通表格（无列高亮）</div>
+            <el-table
+                :data="tableData"
+                style="width: 100%"
+                 >
+                <el-table-column prop="date" label="日期" width="180"></el-table-column>
+                <el-table-column prop="name" label="姓名" width="180"></el-table-column>
+                <el-table-column prop="address" label="地址"></el-table-column>
+                <el-table-column prop="score" label="分数" width="100"></el-table-column>
+            </el-table>
+            <p style="color: #909399; margin-top: 10px;">这个表格没有列高亮功能</p>
+        </div>
+
+        <div class="demo-section">
+            <div class="demo-title">斑马纹表格 + 列高亮</div>
+            <el-table
+                :highlight-current-col="true"
+                :data="tableData"
+                style="width: 100%"
+                 
+                stripe>
+                <el-table-column prop="date" label="日期" width="180"></el-table-column>
+                <el-table-column prop="name" label="姓名" width="180"></el-table-column>
+                <el-table-column prop="address" label="地址"></el-table-column>
+                <el-table-column prop="score" label="分数" width="100"></el-table-column>
+            </el-table>
+        </div>
+    </div>
+
+    <script src="./dist/index.umd.js"></script>
+    <script>
+        Vue.use(ELEMENT);
+        
+    // 安装插件
+    Vue.use(ElTableEnhance);        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    tableData: [{
+                        date: '2016-05-02',
+                        name: '王小虎',
+                        address: '上海市普陀区金沙江路 1518 弄',
+                        score: 95
+                    }, {
+                        date: '2016-05-04',
+                        name: '李小红',
+                        address: '上海市普陀区金沙江路 1517 弄',
+                        score: 87
+                    }, {
+                        date: '2016-05-01',
+                        name: '张小明',
+                        address: '上海市普陀区金沙江路 1519 弄',
+                        score: 92
+                    }, {
+                        date: '2016-05-03',
+                        name: '赵小美',
+                        address: '上海市普陀区金沙江路 1516 弄',
+                        score: 89
+                    }]
+                };
+            }
+        });
+    </script>
+</body>
+</html>
