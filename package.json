@@ -1,6 +1,6 @@
 {
   "name": "el-table-enhance",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "Element UI Table增强类库，提供列高亮等功能",
   "main": "dist/index.js",

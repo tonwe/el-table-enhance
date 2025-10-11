@@ -2,7 +2,7 @@
 export function createColumnHighlightEnhancer() {
   return {
     props: {
-      highlightCurrentCol: {
+      highlightCol: {
         type: Boolean,
         default: false
       }
@@ -25,7 +25,7 @@ export function createColumnHighlightEnhancer() {
 
       handleHeaderMouseEnter(event: Event): void {
         const vm = this as any
-        if (!vm.highlightCurrentCol) return
+        if (!vm.highlightCol) return
         const target = event.target as HTMLElement
         // 找到最近的 th 元素（可能事件目标是 th 内部的元素）
         const th = target.closest('th') as HTMLElement
@@ -36,7 +36,7 @@ export function createColumnHighlightEnhancer() {
 
       handleHeaderMouseLeave(event: Event): void {
         const vm = this as any
-        if (!vm.highlightCurrentCol) return
+        if (!vm.highlightCol) return
         const target = event.target as HTMLElement
         // 找到最近的 th 元素
         const th = target.closest('th') as HTMLElement
@@ -122,7 +122,7 @@ export function createColumnHighlightEnhancer() {
 
         row.classList.add('el-table-enhanced-row-hover')
 
-        if (!vm.highlightCurrentCol) return
+        if (!vm.highlightCol) return
 
         const cellIndex = Array.from(row.children).indexOf(cell)
         
@@ -160,7 +160,7 @@ export function createColumnHighlightEnhancer() {
 
         row.classList.remove('el-table-enhanced-row-hover')
 
-        if (!vm.highlightCurrentCol) return
+        if (!vm.highlightCol) return
 
         const cellIndex = Array.from(row.children).indexOf(cell)
         
@@ -200,7 +200,7 @@ export function createColumnHighlightEnhancer() {
     mounted() {
       const vm = this as any
       // 使用事件委托为表头添加鼠标事件监听器，适应动态数据变化
-      if (vm.highlightCurrentCol) {
+      if (vm.highlightCol) {
         vm.$nextTick(() => {
           const headerWrapper = vm.$el.querySelector('.el-table__header-wrapper')
           if (headerWrapper) {
@@ -214,7 +214,7 @@ export function createColumnHighlightEnhancer() {
     beforeDestroy() {
       const vm = this as any
       // 清理表头事件监听器
-      if (vm.highlightCurrentCol) {
+      if (vm.highlightCol) {
         const headerWrapper = vm.$el.querySelector('.el-table__header-wrapper')
         if (headerWrapper) {
           headerWrapper.removeEventListener('mouseover', vm.handleHeaderMouseEnter)

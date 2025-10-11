@@ -43,7 +43,7 @@ Vue.use(ElTableEnhance)
 <template>
   <el-table 
     :data="tableData" 
-    highlight-columns
+    highlightCol
     resizable
   >
     <el-table-column prop="name" label="姓名" />
