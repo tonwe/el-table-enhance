@@ -30,8 +30,7 @@ npm install el-table-enhance
 ```javascript
 import Vue from 'vue'
 import ElementUI from 'element-ui'
-import ElTableEnhance from 'el-table-enhance'
-import 'el-table-enhance/dist/index.css'
+import ElTableEnhance from 'el-table-enhance' 
 
 Vue.use(ElementUI)
 Vue.use(ElTableEnhance)
