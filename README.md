@@ -73,7 +73,7 @@ export default {
 
 | 属性名 | 类型 | 默认值 | 说明 |
 |--------|------|--------|------|
-| `highlight-columns` | Boolean | `false` | 是否启用列高亮功能 |
+| `highlightCol` | Boolean | `false` | 是否启用列高亮功能 |
 | `resizable` | Boolean | `false` | 是否启用列宽拖拽调整功能 |
 
 ## 样式自定义
